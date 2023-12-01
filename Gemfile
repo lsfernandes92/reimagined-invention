@@ -39,6 +39,12 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 
+# A library for generating fake data such as names, addresses, and phone numbers.
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
+
+# Internationalization (i18n) library for Ruby
+gem 'i18n'
+
 group :development, :test do
   gem "brakeman"
   gem "bundler-audit"
