@@ -44,7 +44,7 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main
 
 # Internationalization (i18n) library for Ruby
 gem 'i18n'
-
+ 
 # Repository for collecting Locale data for Ruby on Rails I18n as well as other interesting, Rails related I18n stuff
 gem 'rails-i18n', '~> 7.0.0'
 

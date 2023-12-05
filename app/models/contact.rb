@@ -1,12 +1,18 @@
 class Contact < ApplicationRecord
     belongs_to :kind, optional: true
+    has_many :phones, dependent: :destroy
 
-    def as_json(options={})
+    accepts_nested_attributes_for :phones, allow_destroy: true
+
+    def as_json(options)
       super(
         root: true,
         methods: :author,
-        include: :kind
-      )
+        include: [:kind, :phones]
+      ) 
+      # hash = super(options)
+      # hash[:birthdate] = birthdate_br
+      # hash
     end
 
     private 
@@ -20,6 +26,6 @@ class Contact < ApplicationRecord
     end
 
     def author
-      "Jorge Luis Borges"
+      Faker::Name.name
     end
 end
