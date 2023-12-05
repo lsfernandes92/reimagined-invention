@@ -2,9 +2,7 @@ namespace :dev do
   desc "Setup the development environment"
   task setup: :environment do
     puts "%%% Setting up the environment..."
-    Rake::Task['db:drop'].invoke
-    Rake::Task['db:create'].invoke
-    Rake::Task['db:migrate'].invoke
+    %x(rails db:drop db:create db:migrate)
     puts "%%% Environment set up successfully!"
 
     puts "%%% Creating contact kinds..."
