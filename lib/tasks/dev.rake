@@ -35,6 +35,17 @@ namespace :dev do
       end
     end
     puts "%%% Contact phone numbers created successfully!"
+
+    puts "%%% Creating and assigning the contact addresses..."
+    Contact.all.each do |contact|
+      address = Address.new(
+        street: Faker::Address.street_name,
+        city: Faker::Address.city
+      )
+      contact.address = address
+      contact.save!
+    end
+    puts "%%% Contact phone numbers created successfully!"
   end
 
 end
