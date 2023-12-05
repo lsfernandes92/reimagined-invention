@@ -5,11 +5,13 @@ class KindsController < ApplicationController
   # GET /kinds.json
   def index
     @kinds = Kind.all
+    render json: @kinds
   end
 
   # GET /kinds/1
   # GET /kinds/1.json
   def show
+    render json: @kind
   end
 
   # POST /kinds

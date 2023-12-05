@@ -51,6 +51,9 @@ gem 'rails-i18n', '~> 7.0.0'
 # Rack Middleware for handling Cross-Origin Resource Sharing (CORS), which makes cross-origin AJAX possible.
 gem 'rack-cors'
 
+# ActiveModel::Serializer implementation and Rails hooks
+gem 'active_model_serializers', '~> 0.10.0'
+
 group :development, :test do
   gem "brakeman"
   gem "bundler-audit"
