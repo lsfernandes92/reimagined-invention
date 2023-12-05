@@ -48,6 +48,9 @@ gem 'i18n'
 # Repository for collecting Locale data for Ruby on Rails I18n as well as other interesting, Rails related I18n stuff
 gem 'rails-i18n', '~> 7.0.0'
 
+# Rack Middleware for handling Cross-Origin Resource Sharing (CORS), which makes cross-origin AJAX possible.
+gem 'rack-cors'
+
 group :development, :test do
   gem "brakeman"
   gem "bundler-audit"
