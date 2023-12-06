@@ -2,11 +2,16 @@ class ContactSerializer < ActiveModel::Serializer
   attributes :id, :name, :email, :birthdate
 
   belongs_to :kind, optional: true, dependent: :destroy do
-    link(:related) { kind_url(object.kind.id) }
+    link(:related) { contact_kind_url(object.id) }
   end
-  
-  has_many :phones, dependent: :destroy
-  has_one :address, dependent: :destroy
+
+  has_many :phones, dependent: :destroy do
+    link(:related) { contact_phones_url(object.id) }
+  end
+
+  has_one :address, dependent: :destroy do
+    link(:related) { contact_address_url(object.id) }
+  end
 
   meta {{ author: Faker::Name.name }}
 
