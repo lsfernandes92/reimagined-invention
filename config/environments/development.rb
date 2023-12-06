@@ -81,4 +81,7 @@ Rails.application.configure do
 
   # To render debugging information preserving the response format, use the value :api
   config.debug_exception_response_format = :api
+
+  # Provided host parameter
+  Rails.application.routes.default_url_options = { host: 'localhost', port: 3000 }
 end
