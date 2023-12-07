@@ -1,4 +1,9 @@
 class ContactsController < ApplicationController
+  # How to add basic HTTP authentication
+  # Basic authentication:
+  include ActionController::HttpAuthentication::Basic::ControllerMethods
+  http_basic_authenticate_with name: 'admin', password: 'admin'
+
   before_action :set_contact, only: %i[ show update destroy ]
 
   # GET /contacts
