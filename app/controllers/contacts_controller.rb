@@ -1,8 +1,7 @@
 class ContactsController < ApplicationController
-  # How to add HTPP authentication
-  # # Digest authentication:
-  include ActionController::HttpAuthentication::Digest::ControllerMethods
-  USERS = { "admin" => Digest::MD5.hexdigest(["admin", "Application", "admin"].join(":")) }
+  # How to authenticate with token
+  TOKEN = 'admin'
+  include ActionController::HttpAuthentication::Token::ControllerMethods
   before_action :authenticate
 
   before_action :set_contact, only: %i[ show update destroy ]
@@ -60,8 +59,13 @@ class ContactsController < ApplicationController
     end
 
     def authenticate
-      authenticate_or_request_with_http_digest do |username|
-        USERS[username]
+      authenticate_or_request_with_http_token do |token, options|
+        # Compare the tokens in a time-constant manner, to mitigate
+        # timing attacks.
+        ActiveSupport::SecurityUtils.secure_compare(
+          ::Digest::SHA256::hexdigest(token), 
+          ::Digest::SHA256::hexdigest(TOKEN)
+        )
       end
     end
 end
