@@ -54,6 +54,9 @@ gem 'rack-cors'
 # ActiveModel::Serializer implementation and Rails hooks
 gem 'active_model_serializers', '~> 0.10.0'
 
+# A pure ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard
+gem 'jwt', '~> 1.5', '>= 1.5.4'
+
 group :development, :test do
   gem "brakeman"
   gem "bundler-audit"

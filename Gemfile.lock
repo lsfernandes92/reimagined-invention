@@ -141,6 +141,7 @@ GEM
       activesupport (>= 5.0.0)
     json (2.6.3)
     jsonapi-renderer (0.2.2)
+    jwt (1.5.6)
     language_server-protocol (3.17.0.3)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -336,6 +337,7 @@ DEPENDENCIES
   i18n
   image_processing (~> 1.2)
   jbuilder
+  jwt (~> 1.5, >= 1.5.4)
   pg (~> 1.5)
   puma (~> 6.3)
   rack-cors

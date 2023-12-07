@@ -1,6 +1,5 @@
 class ContactsController < ApplicationController
-  # How to authenticate with token
-  TOKEN = 'admin'
+  # How to authenticate with JWT token
   include ActionController::HttpAuthentication::Token::ControllerMethods
   before_action :authenticate
 
@@ -60,12 +59,7 @@ class ContactsController < ApplicationController
 
     def authenticate
       authenticate_or_request_with_http_token do |token, options|
-        # Compare the tokens in a time-constant manner, to mitigate
-        # timing attacks.
-        ActiveSupport::SecurityUtils.secure_compare(
-          ::Digest::SHA256::hexdigest(token), 
-          ::Digest::SHA256::hexdigest(TOKEN)
-        )
+        JWT.decode(token, AuthsController::HMAC_SECRET, true, { algorithm: 'HS256' })
       end
     end
 end
