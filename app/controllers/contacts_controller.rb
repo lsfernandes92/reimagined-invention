@@ -1,8 +1,9 @@
 class ContactsController < ApplicationController
-  # How to add basic HTTP authentication
-  # Basic authentication:
-  include ActionController::HttpAuthentication::Basic::ControllerMethods
-  http_basic_authenticate_with name: 'admin', password: 'admin'
+  # How to add HTPP authentication
+  # # Digest authentication:
+  include ActionController::HttpAuthentication::Digest::ControllerMethods
+  USERS = { "admin" => Digest::MD5.hexdigest(["admin", "Application", "admin"].join(":")) }
+  before_action :authenticate
 
   before_action :set_contact, only: %i[ show update destroy ]
 
@@ -56,5 +57,11 @@ class ContactsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def contact_params
       ActiveModelSerializers::Deserialization.jsonapi_parse(params)
+    end
+
+    def authenticate
+      authenticate_or_request_with_http_digest do |username|
+        USERS[username]
+      end
     end
 end
