@@ -64,6 +64,9 @@ gem 'devise', '~> 4.2'
 gem 'devise_token_auth', '>= 1.2.2', git: "https://github.com/lynndylanhurley/devise_token_auth"
 gem 'devise-i18n'
 
+# A plugin for versioning Rails based RESTful APIs
+gem 'versionist', '~> 2.0', '>= 2.0.1'
+
 group :development, :test do
   gem "brakeman"
   gem "bundler-audit"
