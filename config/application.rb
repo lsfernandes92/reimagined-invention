@@ -51,5 +51,10 @@ module MyApp
     config.session_store :cookie_store, key: '_interslice_session'
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use config.session_store, config.session_options
+
+    # Add hosts to the allowed list
+    %w[myapp.local v1.myapp.local v2.myapp.local].each do |host|
+      config.hosts << host
+    end
   end
 end
