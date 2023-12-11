@@ -84,4 +84,7 @@ Rails.application.configure do
 
   # Provided host parameter
   Rails.application.routes.default_url_options = { host: 'localhost', port: 3000 }
+
+  # Devise mailer needed by devise_token_auth
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end

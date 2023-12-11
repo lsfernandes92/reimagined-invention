@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :admin
+  mount_devise_token_auth_for 'User', at: 'auth'
   resources :auths, only: [:create]
+
   resources :kinds
   resources :contacts do
     resource :kind, only: [:show]

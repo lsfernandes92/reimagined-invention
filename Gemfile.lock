@@ -6,6 +6,15 @@ GIT
     faker (3.2.2)
       i18n (>= 1.8.11, < 2)
 
+GIT
+  remote: https://github.com/lynndylanhurley/devise_token_auth
+  revision: 6b0659f18c678b319913d0fb053e96aa555857aa
+  specs:
+    devise_token_auth (1.2.2)
+      bcrypt (~> 3.0)
+      devise (> 3.5.2, < 5)
+      rails (>= 4.2.0, < 7.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -92,6 +101,7 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
     base64 (0.2.0)
+    bcrypt (3.1.20)
     bigdecimal (3.1.4)
     bindex (0.8.1)
     bootsnap (1.17.0)
@@ -119,6 +129,14 @@ GEM
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    devise (4.9.3)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
+    devise-i18n (1.12.0)
+      devise (>= 4.9.0)
     diff-lcs (1.5.0)
     drb (2.2.0)
       ruby2_keywords
@@ -174,6 +192,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
+    orm_adapter (0.5.0)
     parallel (1.23.0)
     parser (3.2.2.4)
       ast (~> 2.4.1)
@@ -240,6 +259,9 @@ GEM
     regexp_parser (2.8.2)
     reline (0.4.0)
       io-console (~> 0.5)
+    responders (3.1.1)
+      actionpack (>= 5.2)
+      railties (>= 5.2)
     rexml (3.2.6)
     rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
@@ -306,6 +328,8 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
+    warden (1.2.9)
+      rack (>= 2.0.9)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -332,6 +356,9 @@ DEPENDENCIES
   bundler-audit
   capybara
   debug
+  devise (~> 4.2)
+  devise-i18n
+  devise_token_auth (>= 1.2.2)!
   error_highlight (>= 0.4.0)
   faker!
   i18n

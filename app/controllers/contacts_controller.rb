@@ -1,7 +1,5 @@
 class ContactsController < ApplicationController
-  # How to authenticate with JWT token
-  include ActionController::HttpAuthentication::Token::ControllerMethods
-  before_action :authenticate
+  before_action :authenticate_user!
 
   before_action :set_contact, only: %i[ show update destroy ]
 
@@ -55,11 +53,5 @@ class ContactsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def contact_params
       ActiveModelSerializers::Deserialization.jsonapi_parse(params)
-    end
-
-    def authenticate
-      authenticate_or_request_with_http_token do |token, options|
-        JWT.decode(token, AuthsController::HMAC_SECRET, true, { algorithm: 'HS256' })
-      end
     end
 end

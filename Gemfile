@@ -57,6 +57,13 @@ gem 'active_model_serializers', '~> 0.10.0'
 # A pure ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard
 gem 'jwt', '~> 1.5', '>= 1.5.4'
 
+# Flexible authentication solution for Rails with Warden
+gem 'devise', '~> 4.2'
+
+# Token based authentication for Rails JSON APIs. Designed to work with jToker and ng-token-auth
+gem 'devise_token_auth', '>= 1.2.2', git: "https://github.com/lynndylanhurley/devise_token_auth"
+gem 'devise-i18n'
+
 group :development, :test do
   gem "brakeman"
   gem "bundler-audit"
