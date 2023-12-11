@@ -45,6 +45,9 @@ module MyApp
     config.generators.system_tests = nil
 
     # Configure the session store
+    # Due to the following error:
+    # ActionDispatch::Session::CookieStore::CookieOverflow
+    # https://stackoverflow.com/questions/74019803/getting-actiondispatchrequestsessiondisabledsessionerror-after-upgrading-t
     config.session_store :cookie_store, key: '_interslice_session'
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use config.session_store, config.session_options
