@@ -3,7 +3,7 @@ module V2
     attributes :id, :city, :street
   
     belongs_to :contact do
-      link(:related) { contact_url(object.contact.id) }
+      link(:related) { v2_contact_url(object.contact.id) }
     end
   end
 end

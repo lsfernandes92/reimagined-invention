@@ -3,16 +3,16 @@ module V2
     attributes :id, :name, :email, :birthdate
   
     belongs_to :kind, optional: true, dependent: :destroy do
-      link(:related) { contact_kind_url(object.id) }
+      link(:related) { v2_contact_kind_url(object.id) }
     end
   
-    # has_many :phones, dependent: :destroy do
-    #   link(:related) { contact_phones_url(object.id) }
-    # end
+    has_many :phones, dependent: :destroy do
+      link(:related) { v2_contact_phones_url(object.id) }
+    end
   
-    # has_one :address, dependent: :destroy do
-    #   link(:related) { contact_address_url(object.id) }
-    # end
+    has_one :address, dependent: :destroy do
+      link(:related) { v2_contact_address_url(object.id) }
+    end
   
     meta {{ author: Faker::Name.name }}
   

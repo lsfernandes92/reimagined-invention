@@ -10,7 +10,7 @@ module V1
     # PATCH/PUT /contacts/:contact_id/address
     def update
       if @contact.address.update(address_params)
-        render @contact.address, status: :ok, location: @contact
+        render json: @contact.address, status: :ok, location: v1_contact_address_url(@contact)
       else
         render json: @contact.errors, status: :unprocessable_entity
       end
@@ -21,7 +21,7 @@ module V1
       @contact.address = Address.new(address_params)
   
       if @contact.save
-        render json: @contact.address, status: :created, location: contact_address_url(@contact)
+        render json: @contact.address, status: :created, location: v1_contact_address_url(@contact)
       else
         render json: @contact.errors, status: :unprocessable_entity
       end

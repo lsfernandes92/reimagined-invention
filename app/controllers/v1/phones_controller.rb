@@ -11,7 +11,7 @@ module V1
     # PATCH/PUT /contacts/:contact_id/phone
     def update
       if @phone.update!(phone_params)
-        render json: @contact.phones, status: :ok, location: contact_phones_url(@contact)
+        render json: @contact.phones, status: :ok, location: v1_contact_phones_url(@contact)
       else
         render json: @contact.errors, status: :unprocessable_entity
       end
@@ -22,7 +22,7 @@ module V1
       @contact.phones << Phone.new(phone_params)
   
       if @contact.save
-        render json: @contact.phones, status: :created, location: contact_phones_url(@contact)
+        render json: @contact.phones, status: :created, location: v1_contact_phones_url(@contact)
       else
         render json: @contact.errors, status: :unprocessable_entity
       end

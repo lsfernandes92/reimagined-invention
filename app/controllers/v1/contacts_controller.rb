@@ -23,7 +23,7 @@ module V1
       @contact = Contact.new(contact_params)
   
       if @contact.save
-        render :show, status: :created, location: @contact
+        render json: @contact, status: :created, location: v1_contact_url(@contact)
       else
         render json: @contact.errors, status: :unprocessable_entity
       end
@@ -33,7 +33,7 @@ module V1
     # PATCH/PUT /contacts/1.json
     def update
       if @contact.update(contact_params)
-        render :show, status: :ok, location: @contact
+        render json: @contact, status: :ok, location: v1_contact_url(@contact)
       else
         render json: @contact.errors, status: :unprocessable_entity
       end
