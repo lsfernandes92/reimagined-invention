@@ -6,6 +6,9 @@ class Contact < ApplicationRecord
     accepts_nested_attributes_for :phones, allow_destroy: true
     accepts_nested_attributes_for :address, update_only: true
 
+    validates_presence_of :address
+    validates_presence_of :kind
+
     paginates_per 4
     
     def as_json(options)

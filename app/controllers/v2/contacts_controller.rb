@@ -26,7 +26,7 @@ module V2
       if @contact.save
         render json: @contact, status: :created, location: v2_contact_url(@contact)
       else
-        render json: @contact.errors, status: :unprocessable_entity
+        render json: ErrorSerializer.serializer(@contact.errors), status: :unprocessable_entity
       end
     end
   
