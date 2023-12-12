@@ -3,11 +3,12 @@ module V2
     before_action :authenticate_user!
   
     before_action :set_contact, only: %i[ show update destroy ]
+    before_action :set_page_number, only: [:index]
   
     # GET /contacts
     # GET /contacts.json
     def index
-      @contacts = Contact.first(2)
+      @contacts = Contact.all.page(@page_number)
       render json: @contacts
     end
   
@@ -49,6 +50,10 @@ module V2
       # Use callbacks to share common setup or constraints between actions.
       def set_contact
         @contact = Contact.find(params[:id])
+      end
+
+      def set_page_number
+        @page_number = params.dig(:page, :number) || '1'
       end
   
       # Only allow a list of trusted parameters through.

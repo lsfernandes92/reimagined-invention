@@ -67,6 +67,9 @@ gem 'devise-i18n'
 # A plugin for versioning Rails based RESTful APIs
 gem 'versionist', '~> 2.0', '>= 2.0.1'
 
+# A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for Ruby webapps
+gem 'kaminari'
+
 group :development, :test do
   gem "brakeman"
   gem "bundler-audit"
