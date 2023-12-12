@@ -1,6 +1,6 @@
 module V2
   class ContactsController < ApplicationController
-    before_action :authenticate_user!
+    # before_action :authenticate_user!
   
     before_action :set_contact, only: %i[ show update destroy ]
     before_action :set_page_number, only: [:index]
@@ -9,7 +9,10 @@ module V2
     # GET /contacts.json
     def index
       @contacts = Contact.all.page(@page_number)
-      render json: @contacts
+      
+      if stale?(etag: @contacts)
+        render json: @contacts
+      end
     end
   
     # GET /contacts/1
