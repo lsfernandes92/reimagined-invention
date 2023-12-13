@@ -15,6 +15,8 @@ require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
 # require "rails/test_unit/railtie"
+# My rack lib to set the app name on the response header
+require_relative '../lib/app_name'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -56,5 +58,11 @@ module MyApp
     %w[myapp.local v1.myapp.local v2.myapp.local].each do |host|
       config.hosts << host
     end
+
+    # Add lib to the autoload paths
+    config.eager_load_paths << Rails.root.join('lib')
+
+    # Test configuring new Rack middleware to set a new header with the app name
+    config.middleware.use AppName
   end
 end
