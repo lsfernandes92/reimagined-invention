@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 2cd4232369246647cf40c00eea2513ee8d612126
+  revision: 8c855291fcbe793d9edbe1fac5195e125eafcb08
   branch: main
   specs:
     faker (3.2.2)
@@ -99,7 +99,6 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
-    api-pagination (5.0.0)
     ast (2.4.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
@@ -369,7 +368,6 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
-  api-pagination
   bootsnap
   brakeman
   bundler-audit
