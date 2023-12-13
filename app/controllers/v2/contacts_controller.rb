@@ -9,7 +9,8 @@ module V2
     # GET /contacts.json
     def index
       @contacts = Contact.all.page(@page_number)
-      render json: @contacts
+      
+      render json: @contacts if stale?(etag: @contacts, public: true)
     end
   
     # GET /contacts/1
