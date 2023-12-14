@@ -78,6 +78,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "rubocop-rails"
   gem "rubocop-rspec"
+  gem 'byebug', '~> 11.1', '>= 11.1.3'
 end
 
 group :development do
